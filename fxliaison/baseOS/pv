@@ -1,0 +1,3 @@
+#!/bin/bash
+
+packer validate debian8.json

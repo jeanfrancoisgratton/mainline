@@ -1,0 +1,12 @@
+v1.02.00.08	2 octobre 2014
+	Ajout de isolatedStorageHelpers.dll
+	Incrementation automatique du build number
+
+v1.02.00	17 septembre 2014
+	Finalisation de l'UI
+
+v1.01.00	14 septembre 2014
+	Ajout des hotkeys, refonte de l'UI
+
+v1.00.00	28 aout 2014
+	Version initiale (squelette applicatif)

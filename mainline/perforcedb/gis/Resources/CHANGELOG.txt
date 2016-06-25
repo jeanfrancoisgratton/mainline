@@ -1,0 +1,13 @@
+v1.40.00		2013.04.19
+	Added capability to create a new XML file
+
+v1.30.00		2013.03.29
+	Added support for an alternate connection string (enclosed in an XML file)
+v1.20.00		2013.03.20
+	Initial functionalities finished and working
+
+v1.10.00		2013.03.07
+	Rewrite du commandline parser
+
+v1.00.00		2013.02.28
+	Version initiale

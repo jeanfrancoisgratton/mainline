@@ -1,0 +1,31 @@
+#
+# Simple profile places /usr/gnu/bin at front,
+# adds /usr/X11/bin, /usr/sbin and /sbin to the end.
+#
+# Use less(1) as the default pager for the man(1) command.
+#
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/opt/bin:/perforce/bin:/perforce/bin/p4v/bin
+export TERM=vt100
+export EDITOR=vi
+export PS1='[\t|\u@\h:\W] '
+unset LS_COLORS
+
+alias esta='sudo netstat -pea|grep ESTA'
+alias aptall='sudo apt-get update;sudo apt-get dist-upgrade;sudo apt-get dselect-upgrade;sudo apt-get upgrade'
+alias aptr='sudo apt-get remove $1 $2 $3 $4 $5 $6 $7 $8 $9'
+alias apti='sudo apt-get install $1 $2 $3 $4 $5 $6 $7 $8 $9'
+alias aptsrc='apt-cache search $1 $2 $3 $4 $5 $6 $7 $8 $9'
+alias dpurge='sudo dpkg -P $1 $2 $3 $4 $5 $6 $7 $8 $9'
+alias iot='clear;sudo iotop'
+
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+
+#export P4USER=jfgratton
+#export P4PORT=dockeros:1919
+#export P4CLIENT=jfgratton_bergen

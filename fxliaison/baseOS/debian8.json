@@ -1,0 +1,84 @@
+{ 
+  "builders":
+  [
+	{
+	  "type" : "vmware-iso",
+	  "iso_url" : "http://10.128.0.231/debian8-core.iso",
+	  "iso_checksum_type": "none",
+	  "headless" : false,
+	  "ssh_username" : "fx",
+	  "ssh_password" : "fxops",
+	  "ssh_wait_timeout" : "120m",
+	  "disk_size" : 40960,
+	  "guest_os_type" : "otherlinux-64",
+	  "vm_name" : "coreOS",
+	  "vmdk_name" : "coreOS",
+	  "boot_wait" : "3s",
+	  "tools_upload_flavor" : "linux",
+	  "tools_upload_path" : "/root/",
+	  "remote_username" : "aamc",
+	  "remote_password" : "FXLia2015",
+	  "remote_host" : "10.128.0.15",
+	  "remote_type" : "esx5",
+	  "remote_datastore" : "MtlEsxVmfs1Lun0",
+	  "remote_cache_datastore" : "MtlEsxVmfs1Lun0",
+	  "remote_cache_directory" : "waa-coreOS-cache",
+	  "output_directory" : "coreOS",
+	  "skip_compaction" : true,
+	  "http_directory" : "/http",
+	  "vnc_port_min" : 61600,
+	  "vnc_port_max" : 61750,
+	  "vmx_data" :
+	  {
+	  	"memsize" : "1024",
+	    "numvcpus" : "2",
+	    "cpuid.coresPerSocket" : "1",
+	    "ethernet0.present" : "TRUE",
+	    "ethernet0.startConnected" : "TRUE",
+	    "ethernet0.wakeOnPcktRcv" : "FALSE",
+	    "ethernet0.networkName" : "VM Network",
+	    "ethernet0.addressType" : "generated",
+	    "floppy0.present" : "FALSE"
+	  },
+	  "boot_command" :
+	  [
+        "<esc><wait>",
+        "install <wait>",
+		"netcfg/get_hostname=waacoreos8 <wait>",
+		"netcfg/get_domain=webadmit.org <wait>",
+		"preseed/url=http://10.128.0.231/preseed.cfg <wait>",
+        "debian-installer=en_US <wait>",
+        "auto <wait>",
+        "locale=en_US <wait>",
+        "kbd-chooser/method=us <wait>",
+        "keyboard-configuration/xkb-keymap=us <wait>",
+        "fb=false <wait>",
+        "debconf/frontend=noninteractive <wait>",
+        "console-setup/ask_detect=false <wait>",
+        "console-keymaps-at/keymap=us <wait>",
+        "<enter><wait>"
+      ]
+	}
+  ],
+  "provisioners":
+  [
+	{
+	  "type" : "file",
+	  "source" : "files/linux.iso",
+	  "destination" : "/tmp/"
+	},
+
+	{
+	  "type" : "shell",
+	  "execute_command": "echo 'fxops' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+	  "scripts":
+	  [
+		"scripts/etc_mods.sh",
+		"scripts/users.sh",
+		"scripts/addPkg.sh",
+		"scripts/network.sh",
+		"scripts/vmtools.sh"
+	  ]
+	}
+  ]
+}

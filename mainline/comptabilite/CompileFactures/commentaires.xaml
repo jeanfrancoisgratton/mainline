@@ -1,0 +1,19 @@
+﻿<Window x:Class="JFG.Comptes.CommentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Commentaires" Height="300" Width="300" Background="{DynamicResource GreenStripe}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="146*"/>
+            <ColumnDefinition Width="146*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Commentaires (1024 caractères max) :" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="238" FontWeight="Bold"/>
+        <TextBox x:Name="TxbxCommentaires" HorizontalAlignment="Stretch" Height="190" Margin="0,50,0,0" VerticalAlignment="Top" Width="Auto" Grid.ColumnSpan="2" Background="{x:Null}" Foreground="White"/>
+        <Button Content="Ajouter" x:Name="btnAddCmt" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Stretch" Width="Auto" Style="{DynamicResource BLEU}" Click="btnAddCmt_Click" IsDefault="True"/>
+        <Button Content="Annuler" x:Name="btnCancelCmt" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Stretch" Width="Auto" Style="{DynamicResource BLEU}" IsCancel="True" Click="btnCancelCmt_Click"/>
+    </Grid>
+</Window>

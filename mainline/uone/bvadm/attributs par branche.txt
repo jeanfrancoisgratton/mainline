@@ -1,0 +1,18 @@
+﻿telephonenumber
+---------------
+dn
+ummsghost, umcallanswerlang, ummwienabled, mailforwardingaddress,
+umcosdn, umgreetinfo, mailHost, uid
+
+
+umbillingnumber
+---------------
+dn
+umuserlevel
+ummwiswitch
+umsmsccenterid
+umbadlogincount
+umlockouttimestamp
+umgreetings (SpokenName,AllCalls)
+umactivegreetingid
+umphonetype

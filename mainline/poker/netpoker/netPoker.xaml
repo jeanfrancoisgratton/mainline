@@ -1,0 +1,8 @@
+﻿<Window x:Class="netpoker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="450" Width="600" Background="{DynamicResource BlueFlashBlack}" ResizeMode="NoResize">
+    <Grid x:Name="background">
+        
+    </Grid>
+</Window>

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "recusadm", "recusadm\recusadm.csproj", "{346F73DF-FFB6-4AC8-AC48-CD70DF474EE5}"
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EC42C812-C0B4-448A-AADD-76248BBD1310}"
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+	ProjectSection(SolutionItems) = preProject
+		recus_dev.sql = recus_dev.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{346F73DF-FFB6-4AC8-AC48-CD70DF474EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346F73DF-FFB6-4AC8-AC48-CD70DF474EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346F73DF-FFB6-4AC8-AC48-CD70DF474EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346F73DF-FFB6-4AC8-AC48-CD70DF474EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

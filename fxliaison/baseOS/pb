@@ -1,0 +1,3 @@
+#!/bin/bash
+
+packer build debian8.json

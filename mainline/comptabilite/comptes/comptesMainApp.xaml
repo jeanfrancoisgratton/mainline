@@ -1,0 +1,25 @@
+﻿<Window x:Class="JFG.Comptes.Bilan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="COMPTABILITÉ" Height="350" Width="525" Loaded="WindowLoaded" Background="{DynamicResource BlueFlashBlack}" Closing="WindowClosing" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="426*" />
+            <ColumnDefinition Width="77*" />
+        </Grid.ColumnDefinitions>
+        <Button Content="Nouv. mois" Name="btnNouveauMois" Height="23" HorizontalAlignment="Stretch" Margin="0,170,0,0" VerticalAlignment="Top" Width="Auto" Style="{StaticResource BLEU}" Grid.Column="1" Click="BtnNouveauMoisClick"/>
+        <Button Content="Postes..." Height="23" HorizontalAlignment="Stretch" Margin="0,200,0,0" VerticalAlignment="Top" Width="Auto" Style="{StaticResource BLEU}" Grid.Column="1" Click="BtnPostesClick" />
+        <Button Content="À propos..." Height="23" HorizontalAlignment="Stretch" Margin="0,230,0,0" VerticalAlignment="Top" Width="Auto" Style="{StaticResource BLEU}" Click="BtnAboutClick" Grid.Column="1" />
+        <Button Content="Fermer" Height="23" HorizontalAlignment="Stretch" Margin="0,260,0,0" VerticalAlignment="Top" Width="Auto" Click="BtnCloseClick" Style="{StaticResource BLEU}" Grid.Column="1" />
+        <StatusBar Height="23" HorizontalAlignment="Stretch" Margin="0,290,0,0" Width="Auto" Name="statusBar1" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <StatusBarItem Name="sbiConnectionString" Width="270" Content="connectionString"/>
+            <Separator/>
+            <StatusBarItem Name="sbiDernierMoisFerme" Width="125" HorizontalContentAlignment="Left" Content="Aucun"/>
+            <Separator/>
+            <StatusBarItem Name="sbiDernierMois" HorizontalContentAlignment="Right"/>
+        </StatusBar>
+        <Button Name="btnShowCreateTable" Content="ShwCreateTbl" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Click="BtnShowCreateTableClick" Grid.Column="1" FontSize="10" Height="23" Style="{DynamicResource JAUNE}"/>
+        <Button Name="btnUsagers" Content="Usagers..." Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,35,0,0" VerticalAlignment="Top" Width="Auto" Height="23" Style="{DynamicResource JAUNE}" Click="BtnUsagersClick"/>
+        <Button x:Name="btnLogin" Content="Login" Grid.Column="1" HorizontalAlignment="Left" Margin="4,74,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource CHOCOLAT}" Height="23" Click="BtnLoginClick"/>
+    </Grid>
+</Window>

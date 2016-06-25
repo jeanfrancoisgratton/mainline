@@ -1,0 +1,13 @@
+﻿<Window x:Class="JFG.Comptes.ModifierPoste"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="modifierPoste" Height="200" Width="350" ShowInTaskbar="False" Loaded="WindowLoaded" Background="{DynamicResource BlueFlashBlack}" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Poste budgétaire :" Foreground="white" Height="28" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="106" />
+        <Label Foreground="Lime" Height="28" HorizontalAlignment="Left" Name="lblPoste" Margin="50,55,0,0" VerticalAlignment="Top" Width="106" FontWeight="Bold" />
+        <Label Content="Devient :" Foreground="white" Height="28" HorizontalAlignment="Left" Margin="20,90,0,0" VerticalAlignment="Top" Width="106" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="50,125,0,0" Name="tbNewPoste" VerticalAlignment="Top" Width="120" />
+        <Button Content="Modifier" Height="23" HorizontalAlignment="Left" Margin="230,40,0,0" Name="btnModifier" VerticalAlignment="Top" Width="75" Style="{StaticResource BLANC}" Click="BtnModifierClick" />
+        <Button Content="Fermer" Height="23" HorizontalAlignment="Left" Margin="230,110,0,0" Name="btnFermer" VerticalAlignment="Top" Width="75" Style="{StaticResource BLANC}" Click="BtnFermerClick" />
+    </Grid>
+</Window>

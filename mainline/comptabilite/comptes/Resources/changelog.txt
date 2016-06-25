@@ -1,0 +1,15 @@
+v1.1.2.0	2012/09/25
+	=> Réorg du code, CREATE TABLE plus complet.
+
+v1.1.1.0	2012/09/24
+	=> SHOW CREATE TABLE, SHOW TABLES implémentées
+
+v1.1.0.0	2012/09/18
+	=> Remplacement du connecteur Devart par MySQL .NET Connector
+	=> Ajout du status bar au bas de la fenêtre principale
+
+v1.0.1.0	2012/09/08
+	=> Correction du bug de création de bd
+
+v1.0.0.0	2012/08/23
+	=> Version initiale

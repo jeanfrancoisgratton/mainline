@@ -1,0 +1,60 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" x:Class="JFG.Comptes.CompileFactures"
+        Title="Entrée des factures" Height="400" Width="500" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" Background="{DynamicResource LoginBackground}" Loaded="WindowLoaded" Closing="WindowClosing">
+    <Grid>
+        <Label Content="Montant :" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="20,25,0,0"/>
+        <editors:MaskedTextBox HorizontalAlignment="Left" Margin="100,25,0,0" x:Name="txbxAmount" VerticalAlignment="Top" IsCaseAutoCorrected="True" Mask="\$([1-9][0-9]*\.[0-9][0-9])" Width="75" Height="23" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="1,1,1,1" TabIndex="1" LostFocus="txbxAmount_LostFocus" >
+            <editors:MaskedTextBox.Foreground>
+                <SolidColorBrush Color="Red" themes:TintGroup.Name="Control"/>
+            </editors:MaskedTextBox.Foreground>
+        </editors:MaskedTextBox>
+        <Label Content="Date :" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="270,25,0,0"/>
+        <editors:MaskedTextBox HorizontalAlignment="Left" Margin="320,25,0,0" x:Name="txbxDate" VerticalAlignment="Top" IsCaseAutoCorrected="True" Mask="20\d\d/(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])" Width="75" Height="23" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="1,1,1,1" TabIndex="2" >
+            <editors:MaskedTextBox.Foreground>
+                <SolidColorBrush Color="Red" themes:TintGroup.Name="Control"/>
+            </editors:MaskedTextBox.Foreground>
+        </editors:MaskedTextBox>
+        <GroupBox Header="Type d'achat : " HorizontalAlignment="Left" Margin="20,65,0,0" VerticalAlignment="Top" Height="205" Width="250" Foreground="White" Grid.RowSpan="2">
+            <Grid>
+                <RadioButton x:Name="rbEpicerie" Content="Épicerie" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="69" Margin="10,10,0,0" TabIndex="3" Checked="rbEpicerie_Checked"/>
+                <RadioButton x:Name="rbEssence" Content="Essence" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="102" Margin="120,10,0,0" TabIndex="4" Checked="rbEssence_Checked"/>
+                <RadioButton x:Name="rbVL" Content="Vidéotron" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="90" Margin="10,30,0,0" TabIndex="5" Checked="rbVL_Checked"/>
+                <RadioButton x:Name="rbBCE" Content="Bell Canada" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="90" Margin="120,30,0,0" TabIndex="6" Checked="rbBCE_Checked"/>
+                <RadioButton x:Name="rbHQ" Content="Hydro Québec" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="102" Margin="10,50,0,0" TabIndex="7" Checked="rbHQ_Checked"/>
+                <RadioButton x:Name="rbResto" Content="Restaurant" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="100" Margin="120,50,0,0" TabIndex="8" Checked="rbResto_Checked"/>
+                <RadioButton x:Name="rbPharmacie" Content="Pharmacie" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="90" Margin="10,70,0,0" TabIndex="9" Checked="rbPharmacie_Checked"/>
+                <RadioButton x:Name="rbHouseStuff" Content="Articles de maison" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="118" Margin="120,70,0,0" TabIndex="10" Checked="rbHouseStuff_Checked"/>
+                <RadioButton x:Name="rbLoyer" Content="Loyer" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="90" Margin="10,90,0,0" TabIndex="11" Checked="rbLoyer_Checked"/>
+                <RadioButton x:Name="rbEnfants" Content="Enfants" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="90" Margin="120,90,0,0" TabIndex="12" Checked="rbEnfants_Checked"/>
+                <RadioButton x:Name="rbMisc" Content="Misc" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="100" Margin="10,110,0,0" TabIndex="13" Checked="rbMisc_Checked"/>
+                <RadioButton x:Name="rbAutre" Content="Autre" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="102" Margin="120,110,0,0" TabIndex="14" Checked="rbAutre_Checked"/>
+                <TextBox x:Name="TxBxAutreTypeAchat" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="220" Height="20" TabIndex="15"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Origine du paiement : " Margin="280,65,0,0" VerticalAlignment="Top" Foreground="White" Height="60" HorizontalAlignment="Left" Width="195">
+            <Grid>
+                <RadioButton x:Name="rbVD" Content="Vicky" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" TabIndex="16" IsChecked="True"/>
+                <RadioButton x:Name="rbJFG" Content="J.F.G." Foreground="White" HorizontalAlignment="Left" Margin="125,10,0,0" VerticalAlignment="Top" TabIndex="17"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Base de données : " HorizontalAlignment="Left" Margin="280,140,0,0" VerticalAlignment="Top" Height="135" Width="195" Foreground="White">
+            <Grid>
+                <RadioButton x:Name="rbHE" Content="comptes.famillegratton.net" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" TabIndex="18" Checked="rbHE_Checked"/>
+                <RadioButton x:Name="rbOsloPub" Content="oslo.famillegratton.net" Foreground="White" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" TabIndex="19" Checked="rbOsloPub_Checked"/>
+                <RadioButton x:Name="rbOsloLAN" Content="oslo (réseau local)" Foreground="White" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" TabIndex="20" Checked="rbOsloLAN_Checked"/>
+                <RadioButton x:Name="rbLocalhost" Content="localhost" Foreground="White" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" TabIndex="21" Checked="rbLocalhost_Checked"/>
+            </Grid>
+        </GroupBox>
+        <StatusBar Height="25" Background="Gray" VerticalAlignment="Bottom" Grid.Row="1">
+            <StatusBarItem x:Name="sbiConnectionString" Width="350" Content="sbiConnectionString" VerticalContentAlignment="Center"/>
+            <Separator/>
+            <StatusBarItem x:Name="sbiNombreEntrees" Width="125" VerticalContentAlignment="Center" Content="sbiNombreEntrees" HorizontalAlignment="Left"/>
+        </StatusBar>
+        <Button x:Name="btnInsert" Content="Insérer" HorizontalAlignment="Left" Margin="20,275,0,0" VerticalAlignment="Center" Width="75" Style="{DynamicResource NOIR}" Height="23" Click="btnInsert_Click" TabIndex="21"/>
+        <!--<Button x:Name="btnSql" Content="SQL" HorizontalAlignment="Left" Margin="210,275,0,0" VerticalAlignment="Center" Width="75" Style="{DynamicResource NOIR}" Height="23" Click="btnSql_Click"/>-->
+        <Button x:Name="btnAbout" Content="À propos ..." HorizontalAlignment="Left" Margin="140,275,0,0" VerticalAlignment="Center" Width="75" Style="{DynamicResource NOIR}" Height="23" Click="btnAbout_Click"/>
+        <Button x:Name="btnClose" Content="Fermer" HorizontalAlignment="Left" Margin="400,275,0,0" VerticalAlignment="Center" Width="75" Style="{DynamicResource NOIR}" Height="23" IsCancel="True" Click="btnClose_Click" TabIndex="22"/>
+        <Button x:Name="btnComment" Content="Comment..." HorizontalAlignment="Left" Margin="275,275,0,0" VerticalAlignment="Center" Width="75" Style="{DynamicResource NOIR}" Height="23" Click="btnComment_Click"/>
+    </Grid>
+</Window>

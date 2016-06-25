@@ -1,0 +1,54 @@
+[global_config]
+  title_transmit_bg_color = "#d30102"
+  focus = mouse
+  inactive_color_offset = 1
+[keybindings]
+  switch_to_tab_6 = <Super>6
+  switch_to_tab_7 = <Super>7
+  switch_to_tab_4 = <Super>4
+  switch_to_tab_5 = <Super>5
+  switch_to_tab_2 = <Super>2
+  switch_to_tab_3 = <Super>3
+  switch_to_tab_1 = <Super>1
+  hide_window = <Alt>a
+  switch_to_tab_8 = <Super>8
+  switch_to_tab_9 = <Super>9
+[profiles]
+  [[default]]
+    scrollback_lines = 50000
+    background_color = "#eee8d5"
+    background_image = None
+    cursor_color = "#002b36"
+    foreground_color = "#002b36"
+  [[solarized-dark]]
+    scrollback_lines = 50000
+    background_color = "#002b36"
+    background_image = None
+    cursor_color = "#eee8d5"
+    foreground_color = "#eee8d5"
+  [[white-on-black]]
+    background_image = None
+    background_color = black
+    foreground_color = white
+  [[black-on-white]]
+    background_image = None
+    background_color = white
+    foreground_color = black
+  [[solarized-light]]
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    scrollback_lines = 50000
+    background_image = None
+    cursor_color = "#002b36"
+    foreground_color = "#002b36"
+    background_color = "#eee8d5"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      profile = solarized-light
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = solarized-light
+[plugins]
+

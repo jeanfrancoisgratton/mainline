@@ -1,0 +1,13 @@
+﻿<Window x:Class="JFG.Comptes.helpDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Aide" Height="350" Width="450" Background="{DynamicResource BlueFlashBlack}" Foreground="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="TxbxHelp" HorizontalAlignment="Stretch" Height="250" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="Auto" Background="{x:Null}" Foreground="White" IsReadOnlyCaretVisible="True" IsReadOnly="True"/>
+        <Button x:Name="BtnClose" Content="Fermer" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Stretch" Width="Auto" Style="{DynamicResource CHOCOLAT}" Height="Auto" Click="BtnClose_Click"/>
+
+    </Grid>
+</Window>

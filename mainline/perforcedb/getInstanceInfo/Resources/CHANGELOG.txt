@@ -1,0 +1,8 @@
+v1.02.00		2014.04.30
+	Rebuild avec nouveaux DLL, sur nouvel IDE
+
+v1.01.00		2013.02.18
+	Deplacement de structures vers un helper DLL, perfutils
+
+v1.00.00		2013.01.31
+	Version initiale

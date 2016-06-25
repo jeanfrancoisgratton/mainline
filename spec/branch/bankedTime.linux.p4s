@@ -1,0 +1,28 @@
+# The form data below was edited by jfgratton
+# A Perforce Branch Specification.
+#
+#  Branch:      The branch name.
+#  Update:      The date this specification was last modified.
+#  Access:      The date of the last 'integrate' using this branch.
+#  Owner:       The user who created this branch.
+#  Description: A short description of the branch (optional).
+#  Options:     Branch update options: [un]locked.
+#  View:        Lines to map source depot files to target depot files.
+#
+# Use 'p4 help branch' to see more about branch views.
+
+Branch:	bankedTime.linux
+
+Update:	2015/02/18 14:06:13
+
+Access:	2015/02/18 14:06:13
+
+Owner:	jfgratton
+
+Description:
+	Created by jfgratton.
+
+Options:	unlocked
+
+View:
+	//mainline/bankedTime/... //mainline/bankedTime.linux/...

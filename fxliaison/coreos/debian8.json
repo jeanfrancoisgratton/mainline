@@ -1,0 +1,122 @@
+{
+  "variables" :
+  {
+	"vmware_host": "10.128.0.15",
+	"vnc_min" : "61600",
+	"vnc_max" : "61750",
+	"esx_user" : "root",
+	"esx_passwd" : "M3ridian",
+	"vm_name" : "baseos",
+	"iso_source" : "http://10.128.0.231/debian-core.iso",
+	"remote_store" : "MtlEsxVmfs1Lun0",
+	"ip_addr" : "10.128.0.230",
+	"netmask" : "255.255.255.0",
+	"gateway" : "10.128.0.254",
+	"dns" : "8.8.8.8"
+  },
+  
+  "builders":
+  [
+	{
+	  "type" : "vmware-iso",
+	  "iso_url" : "{{user `iso_source`}}",
+	  "iso_checksum_type": "none",
+	  "headless" : false,
+	  "ssh_username" : "fx",
+	  "ssh_password" : "fxops",
+	  "ssh_wait_timeout" : "120m",
+	  "disk_size" : 40960,
+	  "vm_name" : "{{user `vm_name`}}",
+	  "vmdk_name" : "{{user `vm_name`}}-disk0",
+	  "boot_wait" : "60s",
+	  "tools_upload_flavor" : "linux",
+          "tools_upload_path" : "/tmp/{{.Flavor}}.iso",
+          "guest_os_type": "debian6-64",
+	  "remote_username" : "{{ user `esx_user`}}",
+	  "remote_password" : "{{ user `esx_passwd`}}",
+	  "remote_host" : "{{user `vmware_host`}}",
+	  "remote_type" : "esx5",
+	  "remote_datastore" : "{{ user `remote_store`}}",
+	  "remote_cache_datastore" : "{{ user `remote_store`}}",
+	  "remote_cache_directory" : "{{ user `vm_name`}}-cache",
+	  "output_directory" : "{{ user `vm_name`}}-{{isotime \"2006-01-02_150405\"}}",
+	  "skip_compaction" : true,
+	  "http_directory" : "http",
+	  "vnc_port_min" : "{{ user `vnc_min`}}",
+	  "vnc_port_max" : "{{ user `vnc_max`}}",
+          "shutdown_command": "echo 'fxops' | sudo -S /sbin/shutdown -hP now",
+	  "vmx_data" :
+	  {
+		"memsize" : "1024",
+		"numvcpus" : "2",
+		"cpuid.coresPerSocket" : "1",
+		"ethernet0.present" : "TRUE",
+		"ethernet0.startConnected" : "TRUE",
+		"ethernet0.wakeOnPcktRcv" : "FALSE",
+		"ethernet0.networkName" : "VM Network",
+		"ethernet0.addressType" : "generated",
+		"floppy0.present" : "FALSE",
+		"annotation" : "Build date: {{isotime \"2006-01-02 15:04:05\"}}"
+	  },
+	  "vmx_data_post" : {
+		"ide1:0.devicetype" : "atapi-cdrom",
+		"ide1:0:filename" : "",
+		"ide1:0.clientDevice" : "TRUE",
+		"ide1:0.startConnected" : "FALSE"
+	  },
+	  "boot_command" :
+	  [
+        "<esc><wait>",
+        "install <wait>",
+	"netcfg/get_hostname={{user `vm_name`}} <wait>",
+	"netcfg/get_domain=webadmit.org <wait>",
+	"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+        "debian-installer=en_US <wait>",
+        "auto <wait>",
+        "locale=en_US <wait>",
+        "kbd-chooser/method=us <wait>",
+        "keyboard-configuration/xkb-keymap=us <wait>",
+        "fb=false <wait>",
+        "debconf/frontend=noninteractive <wait>",
+        "console-setup/ask_detect=false <wait>",
+        "console-keymaps-at/keymap=us <wait>",
+        "netcfg/get_ipaddress={{ user `ip_addr`}} <wait>",
+        "netcfg/get_netmask={{ user `netmask`}} <wait>",
+        "netcfg/get_gateway={{ user `gateway`}} <wait>",
+        "netcfg/get_nameservers={{ user `dns`}} <wait>",
+        "netcfg/disable_dhcp=true <wait>",
+        "<enter><wait>"
+      ]
+	}
+  ],
+  "provisioners":
+  [
+	{
+		"type": "shell",
+		"inline": [
+			"# Installs the vmware tools",
+			"echo 'installing VMWare Tools'",
+			"sudo mkdir /cdrom",
+			"sudo mount /dev/sr0 /cdrom",
+			"sleep 30",
+			"sudo mount",
+			"sudo ls -lh /cdrom",
+			"sudo tar xf /cdrom/VMwareTools* -C /tmp",
+			"sudo /tmp/vmware-tools-distrib/vmware-install.pl --default",
+			"sudo rmdir /cdrom"
+		]
+	},
+	{
+		"type": "file",
+		"source": "files/config/etc/network/interfaces",
+		"destination": "/tmp/interfaces"
+	},
+	{
+		"type" : "shell",
+		"inline": [
+			"# Reconfigure the network to use dhcp",
+			"sudo install /tmp/interfaces /etc/network/interfaces -m 0644 -o root -g root"
+		]
+	}
+  ]
+}

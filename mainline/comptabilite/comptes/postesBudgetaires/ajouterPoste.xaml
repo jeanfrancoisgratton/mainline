@@ -1,0 +1,12 @@
+﻿<Window x:Class="JFG.Comptes.AjouterPoste"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ajouterPoste" Height="140" Width="350" ShowInTaskbar="False" Background="{DynamicResource BlueFlashBlack}" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Nouveau poste budgétaire :" Foreground="White" HorizontalAlignment="Left" Margin="20,15,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbNouveauPoste" HorizontalAlignment="Left" Height="23" Margin="20,60,0,0" VerticalAlignment="Top" Width="150" MaxLength="45"/>
+        <Button x:Name="btnInsert" Content="Insérer" HorizontalAlignment="Left" Margin="240,20,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Style="{DynamicResource BLEU}" Height="23" Click="BtnInsertClick"/>
+        <Button x:Name="btnCancel" Content="Annuler" HorizontalAlignment="Left" Margin="240,60,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Style="{DynamicResource BLEU}" Height="23" Click="BtnCancelClick"/>
+
+    </Grid>
+</Window>

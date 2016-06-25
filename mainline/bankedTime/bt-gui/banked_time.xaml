@@ -1,0 +1,38 @@
+﻿<Window x:Class="JFG.FX.bt_gui"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Temps banqué" Height="350" Width="525" ResizeMode="NoResize" Background="{DynamicResource BlueFlashBlack}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="275*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="146*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <StatusBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Background="Black" Foreground="White" Height="23">
+            <StatusBarItem>
+                <TextBlock x:Name="txtblkRecords" Text="Entrée" Foreground="White" Background="Black" Width="300" MouseDown="CONNECTION"/>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock x:Name="txtblkConn" Text="{Binding Content, ElementName=lblUserBD}" Foreground="White" Background="Black"/>
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl Name="tabctrl1" Grid.Row="0" Grid.ColumnSpan="2" Background="{x:Null}">
+            <TabItem x:Name="tabBanked" Header="Temps banqué" MouseLeftButtonDown="BankedTimeTabMouseDown" MouseRightButtonDown="BankedTimeTabMouseDown">
+                <Label Content="Temps banqué :" Foreground="White" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="103"/>
+            </TabItem>
+            <TabItem x:Name="tabOver" Header="Overtime" MouseLeftButtonDown="OvertimeTabMouseDown" MouseRightButtonDown="OvertimeTabMouseDown">
+                <Label Content="Overtime :" Foreground="White" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="103"/>
+            </TabItem>
+            <TabItem x:Name="tabDatabase" Header="DB" MouseLeftButtonDown="DBTabMouseDown" MouseRightButtonDown="DBTabMouseDown">
+                <Label Content="Database :" Foreground="White" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="103"/>
+            </TabItem>
+            <TabItem x:Name="tabConnection" Header="CONNEXION" Visibility="Hidden">
+                <Label Content="TABCONNECTION :" Foreground="White" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="130"/>
+            </TabItem>
+            </TabControl>
+    </Grid>
+</Window>

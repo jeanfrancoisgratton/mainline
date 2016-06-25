@@ -1,0 +1,21 @@
+# Copy file in /lib/systemd/system, chmod to 644
+
+[Unit]
+Description=Perforce source control management
+Requires=network.target
+After=network.target
+
+
+[Service]
+Type=forking
+User=perforce
+ExecStartPre=/perforce/bin/p4-clean-startlocks
+ExecStart=/perforce/bin/p4-start-all-instances -x
+ExecStop=/perforce/bin/p4-stop-all-instances -x
+ExecStopPost=/perforce/bin/p4-clean-startlocks
+
+[Install]
+WantedBy=network.target
+
+
+

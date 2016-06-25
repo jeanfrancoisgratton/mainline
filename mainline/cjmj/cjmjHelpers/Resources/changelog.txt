@@ -1,0 +1,51 @@
+v2.00.00 - 2 août 2012
+	=> rewrite complet du DLL
+
+v1.20.00 - 26 septembre 2011
+	=> multi-threaded FindFile(), pour trouver les différents binaries du projet
+
+v1.10.00 - 15 septembre 2011
+	=> ajout de helpers SQL. listeTablesBD
+	=> ajout de références aux Assemblies devart.data & devart.data.mysql
+
+v1.06.02 - 14 septembre 2011
+	=> déplacement de la classe ControleAccesCreds dans le nouveau namespace CJMJ.helpers.XML
+	=> CJMJ.helpers.binlocXML --> CJMJ.helpers.XML.binloc
+
+v1.06.00 - 13 septembree 2011
+	=> ajout de référence à sysutils
+	=> ajout d'une fonctionalité de recherche de binaires (recherche de mysqldump, mysql, etc)
+	=> nouvelle classe : binlocXML
+
+v1.05.00 - 18 aout 2011
+	=> ajout des strings de creation/population des tables en string resources, avec helpers pour aller
+	les lire
+
+v1.04.00 - 14 aout 2011
+	=> ajout de la classe bulSQLOps pour lecture / ecriture en batch de tables
+
+v1.03.00 - 10 aout 2011
+	=> modification du constructeur de controlAccessCreds()
+	=> suppression de sqlLog et transactionLog de creds_struct . Ces 2 champs seront hardcoded.
+	Who needs the trouble.
+	Ils ne seront donc pas lus du XML.
+
+v1.02.00 - 10 aout 2011
+	=> deplacement de l'element LOGS dans le fichier XML
+
+	...faudrait peut-etre trouver un autre endroit que le xml+isolated storage pour stocker cette info ?
+
+v1.01.00 - 8 aout 2011
+	=> les fichiers en isolatedStorage se trouveront maintenant dans un repertoire commun plutot que
+	dans le root. le repertoire est CentreJardinMontJoli/
+
+v1.00.03 - 4 aout 2011
+	=> modification du exception handling pour qu'il catch rapidement FileNotFound et evite ainsi
+	de faire des Close() aux streams --> donc de generer une nouvelle Exception
+
+v1.00.02 - 16 juillet 2011
+	=> isolatedStorage elimine, on envoie le XML dans le filesystem non-secure
+	... pour le moment !
+
+v1.00.00 - 15 juillet 2011
+	=> version initiale (xml dans isolatedStorage)

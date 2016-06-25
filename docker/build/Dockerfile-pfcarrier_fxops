@@ -1,0 +1,123 @@
+FROM ubuntu:14.04
+MAINTAINER Pierre Fortin Carrier "pierre.fortincarrier@gmail.com"
+
+# Set locale
+RUN locale-gen en_CA.UTF-8
+ENV LC_ALL en_CA.UTF-8
+ENV DEBIAN_FRONTEND noninteractive
+ENV REFRESHED_AT 2014-11-19.0
+ENV USERNAME pierre.fortincarrier yazid.benakmoum douglas.meldrum fx jean-francois.gratton
+
+# Base package install
+#
+RUN apt-get update && \
+    apt-get install -y vpnc clusterssh xclip terminator rdesktop freerdp-x11 bc openssh-server man git vim \
+        dnsutils wget sudo net-tools keychain iptables ca-certificates pwgen psmisc procps bash-completion \
+        telnet whois lynx links2 links curl sharutils git-core build-essential pkg-config libtool libevent-dev \
+        libncurses-dev zlib1g-dev automake libssh-dev cmake ruby apparmor apparmor-profiles apparmor-utils
+RUN apt-get install -y --no-install-recommends nmap && mkdir /var/run/sshd && echo "UseDNS no" >> /etc/ssh/sshd_config
+
+# Install latest version of docker
+#
+RUN wget -q -O - https://get.docker.io/gpg | apt-key add - && \
+    echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list && \
+    apt-get update && apt-get install -y -q lxc-docker
+
+# Install tmate to share ssh session
+#
+RUN wget -q https://github.com/nviennot/tmate/archive/1.8.10.tar.gz && \
+    tar -xzf 1.8.10.tar.gz && cd tmate-1.8.10 && ./autogen.sh && ./configure  && \
+    make && make install && cd .. && rm -rf 1.8.10.tar.gz tmate-1.8.10
+
+# Customization for terminator
+#
+RUN mkdir -p /etc/skel/.config/terminator
+ADD terminator/config /etc/skel/.config/terminator/config
+
+# Allow ops users to use sudo
+#
+RUN sed -i 's/^%sudo\tALL=(ALL:ALL) ALL/%sudo  ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
+
+# Create ops users
+#
+RUN mkdir /etc/skel/.ssh
+ADD ssh/known_hosts /etc/skel/.ssh/known_hosts
+ADD ssh/config /etc/skel/.ssh/config
+ADD keys/id_rsa.fxops /etc/skel/.ssh/id_rsa.fxops
+ADD keys/id_rsa.fxops.pub /etc/skel/.ssh/id_rsa.fxops.pub
+ADD ssh/authorized_keys /etc/skel/.ssh/authorized_keys
+ADD templates/bashrc /etc/skel/.bashrc
+RUN for username in $USERNAME ; do \
+      username_wada=$(echo $username | sed -e "s/^\([a-Z][a-Z]\)[^\.]*\.\([a-Z][a-Z]\).*$/a\1\2/" ) ; \
+      useradd -m -s /bin/bash $username ; \
+      echo "$username:fx" | chpasswd || true; \
+      addgroup $username sudo ; \
+      addgroup $username docker ; \
+      sed -e "s/_USERNAME_FX_/$username/g" -e "s/_USERNAME_WADA_/$username_wada/g" -i /home/$username/.bashrc ; \
+      sed -e "s/_USERNAME_FX_/$username/g" -e "s/_USERNAME_WADA_/$username_wada/g" -i /home/$username/.ssh/config ; \
+    done
+
+# Allow to run docker within docker and pull ubuntu
+#
+#VOLUME /var/lib/docker - now bindmounting /var/lib/docker instead
+ADD wrapdocker /sbin/wrapdocker
+RUN chmod +x /sbin/wrapdocker
+
+# Holder to have some file persist in the hosts
+#
+RUN mkdir /work && \
+    chmod 0777 /work
+
+# Allow all users to use ping
+#
+RUN chmod +s /bin/ping
+
+# Install google-chrome
+#
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    apt-get -y install libnss3 libxss1 libappindicator1 && \
+    dpkg -i google-chrome-stable_current_amd64.deb
+
+# Allow to run skype
+#
+ADD skype /usr/bin/skype
+
+# Customization for each ops personal
+#
+ENV user pierre.fortincarrier
+ADD keys/id_rsa.p2 /home/$user/.ssh/id_rsa 
+ADD keys/id_rsa.p2.pub /home/$user/.ssh/id_rsa.pub
+RUN chown -R $user:$user /home/$user/ && \
+    chmod 0700 /home/$user/.ssh && \
+    chmod 0600 /home/$user/.ssh/id_rsa && \
+    chown -R $user:$user /home/$user/.ssh/id_rsa && \
+    echo "[user]" >> /home/$user/.gitconfig && \
+    echo "email = pierre.fortincarrier@gmail.com" >> /home/$user/.gitconfig && \
+    echo "name = Pierre Fortin Carrier" >> /home/$user/.gitconfig
+
+ENV user yazid.benakmoum
+ADD keys/id_rsa.yazid /home/$user/.ssh/id_rsa
+ADD keys/id_rsa.yazid.pub /home/$user/.ssh/id_rsa.pub
+RUN chown -R $user:$user /home/$user && chmod 0700 /home/$user/.ssh && chmod 0600 /home/$user/.ssh/id_rsa
+
+ENV user jean-francois.gratton
+ADD keys/id_rsa.jf /home/$user/.ssh/id_rsa
+ADD keys/id_rsa.jf.pub /home/$user/.ssh/id_rsa.pub
+#Following added to make username mangling a bit more insane, vpnc-wise
+ADD templates/bashrc-jfgratton /home/jean-francois.gratton/.bashrc
+RUN chmod 0700 /home/$user/.ssh && chmod 0600 /home/$user/.ssh/id_rsa && \
+    echo "[user]\n  email = grattojf@gmail.com\n  name = Jean-Francois Gratton" > /home/$user/.gitconfig && chown -R $user:$user /home/$user
+
+ENV user _
+
+#
+## End of ops user customization
+
+# Export ports and default startup
+#
+EXPOSE 22
+ADD start.sh /sbin/start.sh
+RUN chmod +x /sbin/start.sh
+CMD ["sh", "/sbin/start.sh"]
+
