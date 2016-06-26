@@ -1,8 +1,0 @@
-v1.20.00	2013.04.10
-	Gestion des fichiers XML contenant les params de connexion
-
-v1.10.00	2013.03.15
-	Gestion de l'output (textHandling.cs)
-
-v1.00.00	2013.03.11
-	Version initiale
