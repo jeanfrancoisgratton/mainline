@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes" ?>
+<!--    Copyright (c) 2012, J.F.Gratton, Services Réseaux IP - Systèmes
+        bvadm
+        bvadm.xml
+-->
+
+<BVADM>
+  
+  <DATABASE>
+    <HOST>localhost</HOST>
+    <PORT>3306</PORT>
+    <DBNAME>uone</DBNAME>
+    <USER>uone</USER>
+    <PASSWORD>uone</PASSWORD>
+  </DATABASE>
+
+  <DIRECTORYSERVER>
+    <DS>
+      HOST="oslo" PORT="389" BASEDN="o=oslods" ADMIN="cn=directory\ manager" PASSWD="jiefgman"
+    </DS>
+    <DS>
+      HOST="localhost" PORT="6389" BASEDN="o=isp" ADMIN="cn=directory\ manager" PASSWD="YM42uvy7"
+    </DS>
+    <DS>
+      HOST="oslo.jeanfrancoisgratton.net" PORT="3899" BASEDN="o=oslods" ADMIN="cn=directory\ manager" PASSWD="jiefgman"
+    </DS>
+  </DIRECTORYSERVER>
+
+  <THEME>
+    <SKINID>1</SKINID>  <!-- VIDEOTRONBLACK -->
+    <SKINID>2</SKINID>  <!-- VIDEOTRONYELLOW -->
+    <SKINID>32</SKINID> <!-- ACISION -->
+  </THEME>
+  
+</BVADM>

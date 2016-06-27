@@ -1,0 +1,27 @@
+﻿<Window x:Class="listeBoitesVocales.listeBVs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Liste des boites vocales réparées" Height="400" Width="550" Background="Black" Foreground="White" xmlns:viblendEditors="clr-namespace:VIBlend.WPF.Controls;assembly=VIBlend.WPF.Editors" Loaded="ListWindow_IsLoaded" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52*" />
+            <RowDefinition Height="218*" />
+            <RowDefinition Height="47*" />
+            <RowDefinition Height="44*" />
+        </Grid.RowDefinitions>
+        <Label Content="BV traitée par :" Foreground="White" Height="28" HorizontalAlignment="Left" Margin="21,12,0,0" Name="label1" VerticalAlignment="Top" Width="120" />
+        <viblendEditors:ComboBox HorizontalAlignment="Left" Margin="150,15,0,0" Name="cboSysadmins" LayoutMode="HorizontalWrap" ArrowBrush="Red" VerticalAlignment="Top" Width="190" FilterMode="StartsWith" SelectionChanged="sysadminSelectionChanged" Text=" " PromptText="Sélectionnez un sysadmin" ColumnsWidth="150" IsEditable="True" />
+        <Button Content="Fermer" Height="30" HorizontalAlignment="Stretch" Margin="0,10,0,0" Name="btnClose" VerticalAlignment="Top" Width="Auto" Click="btnClose_Click" Grid.Row="3" Style="{StaticResource GelButton}" />
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="True" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="dgBV" VerticalAlignment="Stretch" Width="Auto">
+            <!--<DataGrid.Columns>
+                <DataGridTextColumn Header="MSISDN" Width="75"/>
+                <DataGridTextColumn Header="Greeting" Width="100"/>
+                <DataGridTextColumn Header="MailStore" Width="70"/>
+                <DataGridTextColumn Header="Billet" Width="55"/>
+                <DataGridTextColumn Header="SysAdmin" Width="100"/>
+                <DataGridCheckBoxColumn Header="TMO ?" Width="50"/>
+            </DataGrid.Columns>-->
+        </DataGrid>
+
+    </Grid>
+</Window>

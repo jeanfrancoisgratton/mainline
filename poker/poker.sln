@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netpoker", "netpoker\netpoker.csproj", "{FB84C071-AF55-43F9-BC27-12F1027D2335}"
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "singleUpoker", "singleUpoker\singleUpoker.csproj", "{020BAE6B-ED5F-4469-AA24-755B3B1418E3}"
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokerHelpers", "pokerHelpers\pokerHelpers.csproj", "{89915C1D-2F63-4A99-85B5-BC3E521693DE}"
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E0C2F90-49FA-4F5C-90A8-B67818077026}"
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+	ProjectSection(SolutionItems) = preProject
+		backgrounds.xaml = backgrounds.xaml
+		gelbuttons.xaml = gelbuttons.xaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(PerforceSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB84C071-AF55-43F9-BC27-12F1027D2335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB84C071-AF55-43F9-BC27-12F1027D2335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB84C071-AF55-43F9-BC27-12F1027D2335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB84C071-AF55-43F9-BC27-12F1027D2335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{020BAE6B-ED5F-4469-AA24-755B3B1418E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{020BAE6B-ED5F-4469-AA24-755B3B1418E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{020BAE6B-ED5F-4469-AA24-755B3B1418E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{020BAE6B-ED5F-4469-AA24-755B3B1418E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89915C1D-2F63-4A99-85B5-BC3E521693DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89915C1D-2F63-4A99-85B5-BC3E521693DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89915C1D-2F63-4A99-85B5-BC3E521693DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89915C1D-2F63-4A99-85B5-BC3E521693DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

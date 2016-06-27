@@ -1,0 +1,5 @@
+15 novembre 2011 -- v1.10.00
+	rewrite partiel pour remplacer MySQL .Net Connector par Devart dotConnect pour la liste des BV (bouton LISTER)
+
+11 novembre 2011 -- v1.00.00
+	version initiale

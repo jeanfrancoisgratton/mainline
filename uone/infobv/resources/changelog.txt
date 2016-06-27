@@ -1,0 +1,20 @@
+﻿2012.03.16	v1.21.00
+	
+	- Possibilité de passer un	msisdn en paramètre au commandline : infobv msisdn
+
+
+2012.03.14	v1.20.00
+
+	- Possibilité d'afficher plusieurs recherches simultanément
+	- Retrait de ViBlend*.dll, donc nouveau contrôle pour le #port
+	- Meilleure validation des champs avant de lancer la recherche.
+
+
+2012.03.13	v1.10.00
+
+	- Code freeze. Production-ready.
+
+
+2012.03.01	v1.00.00
+
+	- Version initiale

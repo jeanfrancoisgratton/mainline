@@ -1,0 +1,5 @@
+v1.00 - pre juillet 2015
+	Version initiale
+
+v2.00 - 11 juillet 2015
+	Ajout des switches -nocaminfo et -nosuffix
