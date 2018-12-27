@@ -1,7 +1,0 @@
-﻿		- Ajouter une variable (ou structure, si le besoin est là) pour gérer le nom de la franchise par défaut dans le combobox
-DONE	- Écrire toute la logique derrière le "about box" et "changelog"
-
-		- Hashing algos pour les passwords
-		- Isolated storage
-
-		- Trouver une façon d'écrire un trigger pour gérer les envois de mails aux gens qui le nécessitent (ceux qui devaient être rappellés plus tard)
