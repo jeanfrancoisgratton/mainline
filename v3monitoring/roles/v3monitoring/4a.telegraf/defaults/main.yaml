@@ -1,0 +1,7 @@
+influxdbserver: CHANGEME
+dbname: monitoringdb
+monitoringuserpasswd: CHANGEME
+monitoringuser: CHANGEME
+influxdbport: 8186
+
+# influxdbserver is most likely the server hosting the various web apps

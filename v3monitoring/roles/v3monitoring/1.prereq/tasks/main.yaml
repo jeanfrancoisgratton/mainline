@@ -1,0 +1,65 @@
+- name: Add Grafana repository
+  yum_repository:
+    name: grafana
+    description: official grafana repo
+    baseurl: https://packagecloud.io/grafana/stable/el/7/$basearch
+    gpgkey: https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+    gpgcheck: yes
+  when: inventory_hostname in groups['server']
+
+- name: InfluxData yum repo (CentOS)
+  yum_repository:
+    name: influxdb
+    description: InfluxDB and Telegraf repo
+    baseurl: https://repos.influxdata.com/centos/\$releasever/\$basearch/stable
+    gpgcheck: yes
+    gpgkey: https://repos.influxdata.com/influxdb.key
+  when: ansible_distribution|lower == 'centos'
+
+- name: InfluxData yum repo (Fedora)
+  copy:
+    src: influxdb.repo-fedora
+    dest: /etc/yum.repos.d/influxdb.repo
+    owner: root
+    group: root
+    mode: 0644
+  when: ansible_distribution|lower == 'fedora'
+
+- name: InfluxData apt repo key (Debian, Ubuntu)
+  apt_key:
+    url: https://repos.influxdata.com/influxdb.key
+    state: present
+  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
+
+- name: Install python-apt on Debian-based hosts (needed for next task)
+  apt:
+    name: python-apt
+    state: present
+  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
+  
+- name: InfluxData apt repo (Debian)
+  apt_repository:
+    repo: deb https://repos.influxdata.com/debian stretch stable
+    state: present
+    filename: influxdb
+  when: ansible_distribution|lower == 'debian'
+
+- name: InfluxData apt repo (Ubuntu)
+  apt_repository:
+    repo: deb https://repos.influxdata.com/ubuntu cosmic stable
+    state: present
+    filename: influxdb
+  when: ansible_distribution|lower == 'ubuntu'
+
+- name: Create dest directories on monitoring server
+  file:
+    path: "{{item.src}}"
+    state: directory
+    mode: "{{ item.mode | default('0755') }}"
+    owner: root
+    group: root
+  with_items:
+   - { src: '/var/famillegratton.net/ansible/files/v3monitoring' }
+   - { src: '/var/famillegratton.net/ansible/deploy/v3monitoring' }
+  when: ansible_hostname in groups['server']
+
