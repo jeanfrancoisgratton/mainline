@@ -1,6 +1,0 @@
-1.prereq/defaults/main.yaml: mon2centos
-2b.graphite/defaults/main.yaml:monitoringserver: mon2centos
-3.grafana/defaults/main.yaml:shortname: mon2centos
-3.grafana/defaults/main.yaml:fullname: mon2centos
-4a.telegraf/defaults/main.yaml:influxdbserver: mon2centos
-4b.collectd/defaults/main.yaml:graphite_server: mon2centos

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ ! -f /var/famillegratton.net/ansible/deploy/v3monitoring/influxdbCreateDB.deployed ]; then
-  influx -port {{ influxdbport }} -precision rfc3339 < /var/famillegratton.net/ansible/files/v3monitoring/createdb.sql
-  sed -ie 's/\#\ auth-enabled\ \=\ false/auth-enabled\ \=\ true/' /etc/influxdb/influxdb.conf
-  systemctl restart influxdb
-  sudo touch /var/famillegratton.net/ansible/deploy/v3monitoring/influxdbCreateDB.deployed
-  sudo chmod 755 /var/famillegratton.net/ansible/deploy/v3monitoring/influxdbCreateDB.deployed
-fi

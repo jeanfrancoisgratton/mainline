@@ -1,4 +1,0 @@
-CREATE DATABASE "{{ dbname }}";
-CREATE USER "{{ adminuser }}" WITH PASSWORD '{{ adminpasswd }}' WITH ALL PRIVILEGES;
-CREATE USER "{{ monitoringuser }}" WITH PASSWORD '{{ monitoringuserpasswd }}';
-GRANT ALL ON {{ dbname }} TO "{{ monitoringuser }}";
